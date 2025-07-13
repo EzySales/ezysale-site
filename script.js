@@ -1,16 +1,24 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const links = document.querySelectorAll("nav a");
+  const content = document.getElementById("content");
 
-function unlock() {
-  const pass = document.getElementById('password').value;
-  if (pass === '168') {
-    document.getElementById('unlock-screen').style.display = 'none';
-    document.getElementById('app-container').style.display = 'flex';
-  } else {
-    document.getElementById('error-msg').innerText = 'Incorrect password.';
+  function loadPage(page) {
+    fetch(page)
+      .then((res) => res.text())
+      .then((html) => {
+        content.innerHTML = html;
+      });
   }
-}
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(section => {
-    section.style.display = 'none';
+
+  // Load the home tab by default
+  loadPage("home.html");
+
+  // Tab switching
+  links.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const page = this.getAttribute("data-page");
+      loadPage(page);
+    });
   });
-  document.getElementById(id).style.display = 'block';
-}
+});
