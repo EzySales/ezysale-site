@@ -3,11 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ezysale Team</title>
-  <script defer="defer" src="main.js"></script>
-  <link rel="stylesheet" href="style.css" />
+  <title>EzySale Agent Portal</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div id="root"></div>
+  <div class="unlock-screen" id="unlock-screen">
+    <div class="unlock-box">
+      <h2>Enter Access Code</h2>
+      <input type="password" id="password" placeholder="Enter password..." />
+      <button onclick="unlock()">Unlock</button>
+      <p id="error-msg"></p>
+    </div>
+  </div>
+
+  <div class="app-container" id="app-container" style="display: none;">
+    <aside class="sidebar">
+      <h1 class="logo">EZYSALES</h1>
+      <nav>
+        <ul>
+          <li onclick="showSection('about')">About Us</li>
+          <li onclick="showSection('loan')">Home Loan Cal</li>
+          <li onclick="showSection('ndi')">NDI</li>
+          <li onclick="showSection('dsr')">DSR</li>
+          <li onclick="showSection('performance')">Performance</li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="content">
+      <section id="about" class="section">Welcome to EzySales Agent Portal.</section>
+      <section id="loan" class="section" style="display: none;">Loan Calculator Coming Soon</section>
+      <section id="ndi" class="section" style="display: none;">NDI Section</section>
+      <section id="dsr" class="section" style="display: none;">DSR Section</section>
+      <section id="performance" class="section" style="display: none;">Performance Stats</section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
