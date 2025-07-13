@@ -1,65 +1,77 @@
 
-body, html {
+body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: url('assets/bg.jpg') no-repeat center center fixed;
+  font-family: Arial, sans-serif;
+  background: url('ce7d1ca8-3088-4eb6-9013-decd255c2104.png') no-repeat center center fixed;
   background-size: cover;
-  color: #e0e6ed;
-  height: 100%;
+  color: white;
 }
-.unlock-screen {
-  position: fixed;
-  inset: 0;
-  backdrop-filter: blur(8px);
-  background-color: rgba(0, 0, 0, 0.65);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.unlock-box {
-  background: rgba(25, 35, 45, 0.9);
-  padding: 2rem;
+
+.login-screen .login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
   border-radius: 10px;
   text-align: center;
 }
-.unlock-box input {
-  padding: 0.5rem;
-  margin: 1rem 0;
-  width: 100%;
+
+.login-container h1 {
+  margin-bottom: 20px;
 }
-.unlock-box button {
-  padding: 0.5rem 1rem;
+
+.login-container input {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 10px;
 }
-#error-msg {
+
+.login-container button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.error-msg {
   color: red;
 }
-.app-container {
+
+.main-screen {
   display: flex;
   height: 100vh;
 }
+
 .sidebar {
-  width: 240px;
-  background-color: rgba(10, 20, 30, 0.85);
-  padding: 1rem;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
 }
-.logo {
-  color: #9be7ff;
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  color: #00ccff;
 }
+
 .sidebar ul {
   list-style: none;
   padding: 0;
 }
+
 .sidebar li {
-  margin: 1rem 0;
+  margin: 10px 0;
   cursor: pointer;
-  color: #cfd8dc;
+  color: white;
 }
+
 .sidebar li:hover {
-  color: #ffffff;
+  text-decoration: underline;
 }
+
 .content {
-  flex-grow: 1;
-  padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.4);
+  flex: 1;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
 }
