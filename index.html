@@ -8,24 +8,21 @@
 </head>
 <body>
     <div id="login-screen" style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh; padding-top: 140px;">
-    <div class="login-box">
-        <input type="password" id="password" placeholder="Enter Password" />
-        <button onclick="unlock()">Login</button>
+      <div class="login-box">
+          <input type="password" id="password" placeholder="Enter Password" />
+          <button onclick="unlock()">Login</button>
+      </div>
     </div>
-</div>
 
     <script>
-  function unlock() {
-    const pwd = document.getElementById('password').value;
-    if (pwd === '168') {
-      window.location.href = 'main.html'; // Redirect to tab layout after login
-    } else {
-      alert('Wrong password!');
-    }
-  }
-</script>
-
-
-    <script src="script.js"></script>
+      function unlock() {
+        const pwd = document.getElementById('password').value;
+        if (pwd === '168') {
+          window.location.href = 'main.html';  // Go to main layout
+        } else {
+          alert('Wrong password!');
+        }
+      }
+    </script>
 </body>
 </html>
