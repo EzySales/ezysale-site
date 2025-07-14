@@ -14,6 +14,11 @@ function loadPage(page) {
     .then(res => res.text())
     .then(html => {
       document.getElementById('content-area').innerHTML = html;
+
+      // ✅ Bind calculator after loading home page
+      if (page === 'home') {
+        bindHlcEvents();
+      }
     })
     .catch(err => {
       document.getElementById('content-area').innerHTML = "<p>Failed to load content.</p>";
@@ -30,9 +35,19 @@ function calculateLoan() {
 
   const loan = price - down;
   const monthly = (loan * rate) / (1 - Math.pow(1 + rate, -months));
-  const result = isFinite(monthly) ? `Monthly Repayment: RM ${monthly.toFixed(2)}` : 'Please check your inputs.';
+  const result = isFinite(monthly)
+    ? `Monthly Repayment: RM ${monthly.toFixed(2)}`
+    : 'Please check your inputs.';
 
   if (document.getElementById('result')) {
     document.getElementById('result').textContent = result;
+  }
+}
+
+// ✅ Bind event after loading home.html
+function bindHlcEvents() {
+  const btn = document.getElementById('calc-btn');
+  if (btn) {
+    btn.addEventListener('click', calculateLoan);
   }
 }
