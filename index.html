@@ -14,12 +14,17 @@
     </div>
 </div>
 
-    <div id="main-content" style="display: none;">
-        
-        <section id="content-area">
-            <!-- Dynamic content loads here -->
-        </section>
-    </div>
+    <script>
+  function unlock() {
+    const pwd = document.getElementById('password').value;
+    if (pwd === '168') {
+      window.location.href = 'main.html'; // Redirect to tab layout after login
+    } else {
+      alert('Wrong password!');
+    }
+  }
+</script>
+
 
     <script src="script.js"></script>
 </body>
