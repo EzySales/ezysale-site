@@ -4,16 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Home Loan Calculator</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      background: url('bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: Arial, sans-serif;
-      color: #fff;
+    .calculator-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
       padding: 20px;
     }
 
@@ -23,21 +19,22 @@
       border-radius: 12px;
       max-width: 500px;
       width: 100%;
+      color: white;
     }
 
-    h1 {
+    .calculator-container h1 {
       text-align: center;
       color: #00cfff;
       margin-bottom: 20px;
     }
 
-    label {
+    .calculator-container label {
       display: block;
       margin-top: 15px;
       font-weight: bold;
     }
 
-    input {
+    .calculator-container input {
       width: 100%;
       padding: 10px;
       border-radius: 6px;
@@ -45,7 +42,7 @@
       margin-top: 5px;
     }
 
-    button {
+    .calculator-container button {
       margin-top: 20px;
       width: 100%;
       padding: 12px;
@@ -66,26 +63,42 @@
       font-size: 1.1rem;
       text-align: center;
     }
+
+    @media screen and (max-width: 768px) {
+      .calculator-container {
+        padding: 20px;
+      }
+
+      .calculator-container h1 {
+        font-size: 1.5rem;
+      }
+
+      .calculator-container button {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="calculator-container">
-    <h1>Home Loan Calculator</h1>
-    <label>Property Price (RM):</label>
-    <input type="number" id="price" placeholder="e.g. 500000" />
+  <div class="calculator-wrapper">
+    <div class="calculator-container">
+      <h1>Home Loan Calculator</h1>
+      <label>Property Price (RM):</label>
+      <input type="number" id="price" placeholder="e.g. 500000" />
 
-    <label>Down Payment (RM):</label>
-    <input type="number" id="down" placeholder="e.g. 50000" />
+      <label>Down Payment (RM):</label>
+      <input type="number" id="down" placeholder="e.g. 50000" />
 
-    <label>Loan Tenure (Years):</label>
-    <input type="number" id="years" placeholder="e.g. 30" />
+      <label>Loan Tenure (Years):</label>
+      <input type="number" id="years" placeholder="e.g. 30" />
 
-    <label>Interest Rate (%):</label>
-    <input type="number" id="rate" placeholder="e.g. 4.2" step="0.01" />
+      <label>Interest Rate (%):</label>
+      <input type="number" id="rate" placeholder="e.g. 4.2" step="0.01" />
 
-    <button onclick="calculateLoan()">Calculate</button>
+      <button onclick="calculateLoan()">Calculate</button>
 
-    <div class="result" id="result"></div>
+      <div class="result" id="result"></div>
+    </div>
   </div>
 
   <script>
