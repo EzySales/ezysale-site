@@ -5,10 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Home Loan Calculator</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .hlc-container {
+      max-width: 400px;
+      margin: 60px auto;
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 20px;
+      border-radius: 12px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .hlc-container h2 {
+      color: #00cfff;
+      margin-bottom: 20px;
+    }
+
+    .hlc-container label {
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .hlc-container input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      margin-top: 5px;
+    }
+
+    .hlc-container button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #00bcd4;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hlc-container button:hover {
+      background-color: #009bb0;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #00ffcc;
+    }
+  </style>
 </head>
 <body>
   <div class="hlc-container">
     <h2>Home Loan Calculator</h2>
+    
     <label for="price">Property Price (RM)</label>
     <input type="number" id="price" placeholder="e.g. 500000" />
 
@@ -22,6 +76,7 @@
     <input type="number" id="rate" placeholder="e.g. 4.2" step="0.01" />
 
     <button onclick="calculateLoan()">Calculate</button>
+    
     <div class="result" id="result"></div>
   </div>
 </body>
