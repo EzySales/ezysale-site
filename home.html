@@ -1,20 +1,26 @@
-
 <div class="hlc-container">
   <h2>Home Loan Calculator</h2>
 
-  <label for="price">Property Price (RM)</label>
-  <input type="number" id="price" placeholder="e.g. 500000" />
+  <div class="form-group">
+    <label for="price">Property Price (RM)</label>
+    <input type="number" id="price" placeholder="e.g. 500000" />
+  </div>
 
-  <label for="down">Down Payment (RM)</label>
-  <input type="number" id="down" placeholder="e.g. 50000" />
+  <div class="form-group">
+    <label for="down">Down Payment (RM)</label>
+    <input type="number" id="down" placeholder="e.g. 50000" />
+  </div>
 
-  <label for="loan">Loan Term (Years)</label>
-  <input type="number" id="loan" placeholder="e.g. 30" />
+  <div class="form-group">
+    <label for="loan">Loan Term (Years)</label>
+    <input type="number" id="loan" placeholder="e.g. 30" />
+  </div>
 
-  <label for="rate">Interest Rate (%)</label>
-  <input type="number" id="rate" placeholder="e.g. 4.2" step="0.01" />
+  <div class="form-group">
+    <label for="rate">Interest Rate (%)</label>
+    <input type="number" id="rate" placeholder="e.g. 4.2" step="0.01" />
+  </div>
 
-  <button id="calc-btn">Calculate</button>
-
+  <button onclick="calculateLoan()">Calculate</button>
   <div class="result" id="result"></div>
 </div>
