@@ -3,13 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Home - EzySale</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Home Loan Calculator</title>
+  <style>
+    body {
+      background: url('bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .calculator-container {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00cfff;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      margin-top: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #00bcd4;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .result {
+      margin-top: 20px;
+      background: #0a3a57;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <div class="content">
-    <h1>Welcome to EzySale</h1>
-    <p>This is your dashboard.</p>
+  <div class="calculator-container">
+    <h1>Home Loan Calculator</h1>
+    <label>Property Price (RM):</label>
+    <input type="number" id="price" placeholder="e.g. 500000" />
+
+    <label>Down Payment (RM):</label>
+    <input type="number" id="down" placeholder="e.g. 50000" />
+
+    <label>Loan Tenure (Years):</label>
+    <input type="number" id="years" placeholder="e.g. 30" />
+
+    <label>Interest Rate (%):</label>
+    <input type="number" id="rate" placeholder="e.g. 4.2" step="0.01" />
+
+    <button onclick="calculateLoan()">Calculate</button>
+
+    <div class="result" id="result"></div>
   </div>
+
+  <script>
+    function calculateLoan() {
+      const price = parseFloat(document.getElementById('price').value);
+      const down = parseFloat(document.getElementById('down').value);
+      const years = parseFloat(document.getElementById('years').value);
+      const rate = parseFloat(document.getElementById('rate').value);
+
+      if (isNaN(price) || isNaN(down) || isNaN(years) || isNaN(rate)) {
+        document.getElementById('result').innerHTML = 'Please fill in all fields correctly.';
+        return;
+      }
+
+      const loanAmount = price - down;
+      const monthlyRate = rate / 100 / 12;
+      const numberOfPayments = years * 12;
+
+      const monthlyRepayment = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) /
+                                (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+
+      document.getElementById('result').innerHTML =
+        `Loan Amount: RM ${loanAmount.toFixed(2)}<br>
+         Monthly Repayment: <strong>RM ${monthlyRepayment.toFixed(2)}</strong>`;
+    }
+  </script>
 </body>
 </html>
