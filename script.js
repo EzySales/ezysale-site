@@ -15,7 +15,7 @@ function loadPage(page) {
     .then(html => {
       document.getElementById('content-area').innerHTML = html;
 
-      // ✅ Bind calculator after loading home page
+      // Call correct function after loading the page
       if (page === 'home') {
         bindHlcEvents();
       }
@@ -25,12 +25,19 @@ function loadPage(page) {
     });
 }
 
-// ✅ Home Loan Calculator logic
+// ✅ Binds the event AFTER the page is loaded
+function bindHlcEvents() {
+  const btn = document.getElementById('calc-btn');
+  if (btn) {
+    btn.addEventListener('click', calculateLoan);
+  }
+}
+
 function calculateLoan() {
-  const price = parseFloat(document.getElementById('price')?.value);
-  const down = parseFloat(document.getElementById('down')?.value);
-  const term = parseInt(document.getElementById('loan')?.value);
-  const rate = parseFloat(document.getElementById('rate')?.value) / 100 / 12;
+  const price = parseFloat(document.getElementById('price')?.value || 0);
+  const down = parseFloat(document.getElementById('down')?.value || 0);
+  const term = parseInt(document.getElementById('loan')?.value || 0);
+  const rate = parseFloat(document.getElementById('rate')?.value || 0) / 100 / 12;
   const months = term * 12;
 
   const loan = price - down;
@@ -41,13 +48,5 @@ function calculateLoan() {
 
   if (document.getElementById('result')) {
     document.getElementById('result').textContent = result;
-  }
-}
-
-// ✅ Bind event after loading home.html
-function bindHlcEvents() {
-  const btn = document.getElementById('calc-btn');
-  if (btn) {
-    btn.addEventListener('click', calculateLoan);
   }
 }
