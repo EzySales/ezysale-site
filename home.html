@@ -76,21 +76,5 @@
     <button onclick="calculateLoan()">Calculate</button>
     <div class="result" id="result"></div>
   </div>
-
-  <script>
-    function calculateLoan() {
-      const price = parseFloat(document.getElementById('price').value);
-      const down = parseFloat(document.getElementById('down').value);
-      const term = parseInt(document.getElementById('loan').value);
-      const rate = parseFloat(document.getElementById('rate').value) / 100 / 12;
-      const months = term * 12;
-
-      const loan = price - down;
-      const monthly = (loan * rate) / (1 - Math.pow(1 + rate, -months));
-      const result = isFinite(monthly) ? `Monthly Repayment: RM ${monthly.toFixed(2)}` : 'Please check your inputs.';
-
-      document.getElementById('result').textContent = result;
-    }
-  </script>
 </body>
 </html>
