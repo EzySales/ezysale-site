@@ -1,78 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Calendar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      color: #00cfff;
+      text-align: center;
+      margin: 2rem 1rem 1rem;
+    }
+    .calendar-container {
+      max-width: 100%;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      max-width: 700px;
+      height: 600px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    @media (max-width: 768px) {
+      iframe {
+        height: 500px;
+      }
+    }
+    @media (max-width: 480px) {
+      iframe {
+        height: 400px;
+      }
+    }
   </style>
 </head>
 <body>
   <h1>Agent Calendar (Weekly)</h1>
-
-  <!-- Google Calendar Embed -->
-  <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+  <div class="calendar-container">
     <iframe 
-      <iframe src="https://calendar.google.com/calendar/embed?src=8100e82c91f27c3b8e8f1021aae958e0070b941a42647b449dbdde40845e6a8e%40group.calendar.google.com&ctz=Asia%2FKuala_Lumpur" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-      style="border: 0;" width="100%" height="600" frameborder="0" scrolling="no">
+      src="https://calendar.google.com/calendar/embed?src=c_94a5e5e8c4a92ac6e95b275f72a63d1b4cb0e6e0526ccf75f1a0c74ef6271a54%40group.calendar.google.com&ctz=Asia%2FKuala_Lumpur"
+      frameborder="0"
+      scrolling="no">
     </iframe>
   </div>
-
-  <!-- Manual Task Entry (team shared widget) -->
-  <form id="taskForm">
-    <input type="text" id="agent" placeholder="Agent Name" required />
-    <input type="text" id="task" placeholder="Task or Appointment" required />
-    <select id="day">
-      <option value="Monday">Monday</option>
-      <option value="Tuesday">Tuesday</option>
-      <option value="Wednesday">Wednesday</option>
-      <option value="Thursday">Thursday</option>
-      <option value="Friday">Friday</option>
-      <option value="Saturday">Saturday</option>
-      <option value="Sunday">Sunday</option>
-    </select>
-    <button type="submit">Add</button>
-  </form>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Day</th>
-        <th>Appointments / Tasks</th>
-      </tr>
-    </thead>
-    <tbody id="calendarBody">
-      <tr><td>Monday</td><td id="Monday"></td></tr>
-      <tr><td>Tuesday</td><td id="Tuesday"></td></tr>
-      <tr><td>Wednesday</td><td id="Wednesday"></td></tr>
-      <tr><td>Thursday</td><td id="Thursday"></td></tr>
-      <tr><td>Friday</td><td id="Friday"></td></tr>
-      <tr><td>Saturday</td><td id="Saturday"></td></tr>
-      <tr><td>Sunday</td><td id="Sunday"></td></tr>
-    </tbody>
-  </table>
-
-  <script>
-    const form = document.getElementById('taskForm');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const agent = document.getElementById('agent').value.trim();
-      const task = document.getElementById('task').value.trim();
-      const day = document.getElementById('day').value;
-
-      if (!agent || !task) return;
-
-      const taskId = Date.now().toString();
-      const taskHTML = `
-        <div class="task" data-id="${taskId}">
-          <span><strong>${agent}</strong>: ${task}</span>
-          <button onclick="deleteTask('${day}', '${taskId}')">Delete</button>
-        </div>
-      `;
-
-      document.getElementById(day).innerHTML += taskHTML;
-      form.reset();
-    });
-
-    function deleteTask(day, id) {
-      const dayCell = document.getElementById(day);
-      const taskDiv = dayCell.querySelector('[data-id="' + id + '"]');
-      if (taskDiv) taskDiv.remove();
-    }
-  </script>
 </body>
 </html>
