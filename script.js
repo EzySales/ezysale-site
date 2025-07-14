@@ -1,3 +1,4 @@
+
 function unlock() {
   const pwd = document.getElementById('password').value;
   if (pwd === '168') {
@@ -14,8 +15,6 @@ function loadPage(page) {
     .then(res => res.text())
     .then(html => {
       document.getElementById('content-area').innerHTML = html;
-
-      // Call correct function after loading the page
       if (page === 'home') {
         bindHlcEvents();
       }
@@ -25,7 +24,6 @@ function loadPage(page) {
     });
 }
 
-// ✅ Binds the event AFTER the page is loaded
 function bindHlcEvents() {
   const btn = document.getElementById('calc-btn');
   if (btn) {
@@ -46,7 +44,6 @@ function calculateLoan() {
     ? `Monthly Repayment: RM ${monthly.toFixed(2)}`
     : 'Please check your inputs.';
 
-  if (document.getElementById('result')) {
-    document.getElementById('result').textContent = result;
-  }
+  const resultEl = document.getElementById('result');
+  if (resultEl) resultEl.textContent = result;
 }
