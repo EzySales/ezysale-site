@@ -4,13 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Agent Calendar</title>
-
-  <!-- FullCalendar CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet" />
-
-  <!-- FullCalendar Global Build (includes plugins) -->
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-
   <style>
     body {
       margin: 0;
@@ -19,35 +12,36 @@
       background: url('bg.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
-      height: 100vh;
-      overflow-x: hidden;
+      text-align: center;
     }
 
     .calendar-container {
-      max-width: 900px;
-      margin: 50px auto;
+      max-width: 1000px;
+      margin: 40px auto;
       background-color: rgba(0, 0, 0, 0.7);
-      padding: 20px;
       border-radius: 10px;
+      padding: 20px;
     }
 
     h1 {
-      text-align: center;
       color: #00cfff;
       margin-bottom: 20px;
     }
 
-    #calendar {
-      background: #fff;
-      border-radius: 10px;
-      padding: 10px;
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: 0;
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
+      iframe {
+        height: 500px;
+      }
+
       .calendar-container {
-        width: 95%;
-        margin: 20px auto;
-        padding: 10px;
+        margin: 20px 10px;
+        padding: 15px;
       }
     }
   </style>
@@ -55,44 +49,11 @@
 <body>
   <div class="calendar-container">
     <h1>Agent Calendar</h1>
-    <div id="calendar"></div>
+    <iframe
+      src="https://calendar.google.com/calendar/embed?src=8100e82c91f27c3b8e8f1021aae958e0070b941a42647b449dbdde40845e6a8e%40group.calendar.google.com&ctz=Asia%2FKuala_Lumpur"
+      frameborder="0"
+      scrolling="no">
+    </iframe>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const calendarEl = document.getElementById('calendar');
-
-      const calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: [FullCalendar.dayGridPlugin, FullCalendar.interactionPlugin],
-        initialView: 'dayGridMonth',
-        editable: true,
-        selectable: true,
-        select: function (info) {
-          const title = prompt('Enter appointment/task title:');
-          if (title) {
-            calendar.addEvent({
-              title: title,
-              start: info.startStr,
-              end: info.endStr,
-              allDay: info.allDay
-            });
-          }
-          calendar.unselect();
-        },
-        eventClick: function (info) {
-          if (confirm('Delete this event?')) {
-            info.event.remove();
-          }
-        },
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        }
-      });
-
-      calendar.render();
-    });
-  </script>
 </body>
 </html>
