@@ -54,3 +54,20 @@ button {
   text-align: center;
   margin-top: 100px;
 }
+
+.tab-btn {
+  padding: 12px 24px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  min-width: 120px;
+  margin: 5px;
+}
+
+.tab-btn:hover {
+  background-color: #008ba3;
+}
