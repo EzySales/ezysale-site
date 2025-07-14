@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>EzySale Portal</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="login-screen" style="display:flex;justify-content:center;align-items:center;height:100vh;">
+        <div class="login-box">
+            <h2>EzySale</h2>
+            <input type="password" id="password" placeholder="Enter Password" />
+            <button onclick="unlock()">Login</button>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        
+        <section id="content-area">
+            <!-- Dynamic content loads here -->
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
