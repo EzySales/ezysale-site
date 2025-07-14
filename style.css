@@ -66,39 +66,37 @@ button {
 .tab-wrapper {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 30px;
+  gap: 8px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 10px 5px;
 }
 
 /* Tab button styles */
 .tab-btn {
-  padding: 10px 20px;
+  padding: 8px 14px;
   background-color: #00bcd4;
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   cursor: pointer;
   transition: background 0.3s ease;
-  min-width: 100px;
+  min-width: 80px;
   text-align: center;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .tab-btn:hover {
   background-color: #008ba3;
 }
 
-/* Mobile: stack tab buttons vertically */
-@media screen and (max-width: 600px) {
-  .tab-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .tab-btn {
-    width: 90%;
-    font-size: 1rem;
-    padding: 12px;
-  }
+/* Optional: Smooth scrolling for horizontal tab on mobile */
+.tab-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+.tab-wrapper::-webkit-scrollbar-thumb {
+  background-color: #00bcd4;
+  border-radius: 4px;
 }
