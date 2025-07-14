@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Calendar</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Agent Calendar</title>
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css' rel='stylesheet' />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js'></script>
   <style>
     body {
       margin: 0;
@@ -11,52 +13,69 @@
       font-family: Arial, sans-serif;
       background: url('bg.jpg') no-repeat center center fixed;
       background-size: cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    h1 {
-      color: #00cfff;
-      text-align: center;
-      margin: 2rem 1rem 1rem;
+      color: #fff;
+      height: 100vh;
+      overflow: hidden;
     }
     .calendar-container {
-      max-width: 100%;
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    iframe {
-      border: none;
-      width: 100%;
-      max-width: 700px;
-      height: 600px;
+      max-width: 900px;
+      margin: 50px auto;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
     }
-
-    @media (max-width: 768px) {
-      iframe {
-        height: 500px;
-      }
+    h1 {
+      text-align: center;
+      color: #00cfff;
+      margin-bottom: 20px;
     }
-    @media (max-width: 480px) {
-      iframe {
-        height: 400px;
+    #calendar {
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px;
+    }
+    @media screen and (max-width: 600px) {
+      .calendar-container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <h1>Agent Calendar (Weekly)</h1>
   <div class="calendar-container">
-    <iframe 
-      <iframe src="https://calendar.google.com/calendar/embed?src=8100e82c91f27c3b8e8f1021aae958e0070b941a42647b449dbdde40845e6a8e%40group.calendar.google.com&ctz=Asia%2FKuala_Lumpur" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-      frameborder="0"
-      scrolling="no">
-    </iframe>
+    <h1>Agent Calendar</h1>
+    <div id='calendar'></div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendarEl = document.getElementById('calendar');
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        editable: true,
+        selectable: true,
+        select: function(info) {
+          const title = prompt('Enter appointment/task title:');
+          if (title) {
+            calendar.addEvent({
+              title: title,
+              start: info.startStr,
+              end: info.endStr,
+              allDay: info.allDay
+            });
+          }
+          calendar.unselect();
+        },
+        eventClick: function(info) {
+          if (confirm('Delete this event?')) {
+            info.event.remove();
+          }
+        }
+      });
+      calendar.render();
+    });
+  </script>
 </body>
 </html>
