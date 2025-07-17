@@ -1,39 +1,102 @@
-.hlc-container {
-  max-width: 400px;
-  margin: 60px auto;
-  background-color: rgba(0, 0, 0, 0.75);
-  padding: 20px;
-  border-radius: 12px;
-  color: #fff;
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
-.hlc-container h2 {
-  color: #00cfff;
+
+body {
+  background: url('bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.login-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 90%;
+  max-width: 300px;
+  margin: 100px auto;
+  color: white;
+}
+
+.login-container h1 {
   margin-bottom: 20px;
 }
-.form-group {
-  margin-bottom: 15px;
-  text-align: left;
+
+.input-group {
+  position: relative;
 }
-input {
+
+input[type="password"] {
   width: 100%;
-  padding: 10px;
-  border-radius: 6px;
+  padding: 10px 35px 10px 10px;
   border: none;
-  margin-top: 5px;
+  border-radius: 5px;
 }
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
 button {
-  width: 100%;
-  padding: 12px;
-  background-color: #00bcd4;
-  color: #fff;
+  margin-top: 20px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
+  background: #00bcd4;
+  color: white;
   font-weight: bold;
   cursor: pointer;
 }
-.result {
-  margin-top: 20px;
-  font-weight: bold;
-  color: #00ffcc;
+
+.content {
+  color: white;
+  text-align: center;
+  margin-top: 100px;
+}
+
+/* Tab container */
+.tab-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 10px 5px;
+}
+
+/* Tab button styles */
+.tab-btn {
+  padding: 8px 14px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  min-width: 80px;
+  text-align: center;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.tab-btn:hover {
+  background-color: #008ba3;
+}
+
+/* Optional: Smooth scrolling for horizontal tab on mobile */
+.tab-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+.tab-wrapper::-webkit-scrollbar-thumb {
+  background-color: #00bcd4;
+  border-radius: 4px;
 }
