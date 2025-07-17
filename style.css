@@ -1,64 +1,62 @@
-.hlc-container {
-  max-width: 400px;
-  margin: 20px auto;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  border-radius: 12px;
-  color: #fff;
-  text-align: center;
-}
-
-.hlc-container h2 {
-  color: #00cfff;
-  margin-bottom: 20px;
-}
-
-.hlc-container label {
-  display: block;
-  margin-top: 10px;
-  text-align: left;
-  font-weight: bold;
-}
-
-.hlc-container input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: none;
-  margin-top: 5px;
-}
-
-.hlc-container button {
-  margin-top: 20px;
-  width: 100%;
-  padding: 12px;
-  background-color: #00bcd4;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.hlc-container button:hover {
-  background-color: #009ba0;
-}
-
-.result {
-  margin-top: 20px;
-  font-weight: bold;
-  color: #00ffcc;
-}
 body, html {
-  height: 100%;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100%;
 }
 
-.main-screen {
-  background: url('bg.jpg') no-repeat center center fixed;
+.bg {
+  background-image: url('bg.jpg'); /* Make sure bg.jpg is in root folder */
   background-size: cover;
-  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
   color: white;
 }
 
+.login-box, .calc-container {
+  background: rgba(0,0,0,0.8);
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  margin: 100px auto;
+  color: #fff;
+}
+
+input, button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+}
+
+button {
+  background-color: #00bcd4;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0097a7;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+.result {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #00e676;
+}
+
+.content-area {
+  padding: 1rem;
+}
