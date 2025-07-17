@@ -24,7 +24,7 @@ function loadPage(page) {
 function attachLoanCalculator() {
   const btn = document.getElementById('calc-btn');
   if (btn) {
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', () => {
       const price = parseFloat(document.getElementById('price').value);
       const down = parseFloat(document.getElementById('down').value);
       const term = parseInt(document.getElementById('loan').value);
@@ -33,7 +33,9 @@ function attachLoanCalculator() {
 
       const loan = price - down;
       const monthly = (loan * rate) / (1 - Math.pow(1 + rate, -months));
-      const result = isFinite(monthly) ? `Monthly Repayment: RM ${monthly.toFixed(2)}` : 'Please check your inputs.';
+      const result = isFinite(monthly)
+        ? `Monthly Repayment: RM ${monthly.toFixed(2)}`
+        : 'Please check your inputs.';
 
       document.getElementById('result').textContent = result;
     });
@@ -41,15 +43,16 @@ function attachLoanCalculator() {
 }
 
 function loadPage(page) {
-  fetch(page)
+  fetch(page + '.html')
     .then(res => res.text())
     .then(html => {
       document.getElementById('content-area').innerHTML = html;
       setTimeout(() => {
         if (page.includes('home')) attachLoanCalculator();
-      }, 50);
+      }, 100); // delay to ensure DOM loads
     })
     .catch(err => {
       document.getElementById('content-area').innerHTML = "<p>Failed to load content.</p>";
     });
 }
+
