@@ -1,60 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>EzySale Portal</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="main-screen">
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 1rem;">
-    <div class="tab-wrapper">
-      <button class="tab-btn" onclick="loadPage('about.html')">About Us</button>
-      <button class="tab-btn" onclick="loadPage('calendar.html')">Calendar</button>
-      <button class="tab-btn" onclick="loadPage('home.html')">HLC</button>
-      <button class="tab-btn" onclick="loadPage('dsr.html')">DSR</button>
-    </div>
+<body class="bg">
+  <div class="header">
+    <button onclick="loadPage('about')">About Us</button>
+    <button onclick="loadPage('calendar')">Calendar</button>
+    <button onclick="loadPage('home')">HLC</button>
+    <button onclick="loadPage('dsr')">DSR</button>
   </div>
 
-  <div class="content" id="content-area">
+  <div id="content-area" class="content-area">
     <p>Welcome! Click a tab to begin.</p>
   </div>
 
-  <script>
-    function loadPage(page) {
-      fetch(page)
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('content-area').innerHTML = html;
-
-          // Attach Home Loan Calculator event
-          if (page.includes('home')) attachLoanCalculator();
-
-          // You can also add similar handlers for DSR if needed
-        })
-        .catch(() => {
-          document.getElementById('content-area').innerHTML = "<p>Failed to load content.</p>";
-        });
-    }
-
-    function attachLoanCalculator() {
-      const btn = document.getElementById('calc-btn');
-      if (btn) {
-        btn.addEventListener('click', function () {
-          const price = parseFloat(document.getElementById('price')?.value);
-          const down = parseFloat(document.getElementById('down')?.value);
-          const term = parseInt(document.getElementById('loan')?.value);
-          const rate = parseFloat(document.getElementById('rate')?.value) / 100 / 12;
-          const months = term * 12;
-
-          const loan = price - down;
-          const monthly = (loan * rate) / (1 - Math.pow(1 + rate, -months));
-          const result = isFinite(monthly) ? `Monthly Repayment: RM ${monthly.toFixed(2)}` : 'Please check your inputs.';
-
-          document.getElementById('result').textContent = result;
-        });
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
