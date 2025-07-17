@@ -31,6 +31,60 @@ body {
   position: relative;
 }
 
+/* Home Loan Calculator (HLC) responsive styles */
+.hlc-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  border-radius: 12px;
+  color: #fff;
+  text-align: center;
+}
+
+.hlc-container h2 {
+  color: #00cfff;
+  margin-bottom: 20px;
+}
+
+.hlc-container label {
+  display: block;
+  margin-top: 12px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.hlc-container input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 5px;
+}
+
+.hlc-container button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hlc-container button:hover {
+  background-color: #009bb0;
+}
+
+.result {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #00ffcc;
+}
+
+
 input[type="password"] {
   width: 100%;
   padding: 10px 35px 10px 10px;
