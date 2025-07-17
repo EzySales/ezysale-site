@@ -1,26 +1,14 @@
 function unlock() {
-    const pwd = document.getElementById('password').value;
-    if (pwd === '168') {
-        document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('main-content').style.display = 'flex';
-        loadPage('home');
-    } else {
-        alert('Wrong password!');
-    }
+  const pwd = document.getElementById('password').value;
+  if (pwd === '168') {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('main-content').style.display = 'flex';
+    loadPage('home');
+  } else {
+    alert('Wrong password!');
+  }
 }
 
-function loadPage(page) {
-    fetch(page + '.html')
-        .then(res => res.text())
-        .then(html => {
-            document.getElementById('content-area').innerHTML = html;
-        })
-        .catch(err => {
-            document.getElementById('content-area').innerHTML = "<p>Failed to load content.</p>";
-        });
-}
-
-// Auto reattach event after dynamic load
 function attachLoanCalculator() {
   const btn = document.getElementById('calc-btn');
   if (btn) {
@@ -42,17 +30,36 @@ function attachLoanCalculator() {
   }
 }
 
+function attachDSRCalculator() {
+  const btn = document.getElementById('dsr-btn');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const income = parseFloat(document.getElementById('income').value);
+      const commitment = parseFloat(document.getElementById('commitment').value);
+
+      if (!isFinite(income) || !isFinite(commitment) || income <= 0) {
+        document.getElementById('dsr-result').textContent = 'Please enter valid numbers.';
+        return;
+      }
+
+      const dsr = (commitment / income) * 100;
+      document.getElementById('dsr-result').textContent = `Your DSR is ${dsr.toFixed(2)}%`;
+    });
+  }
+}
+
 function loadPage(page) {
   fetch(page + '.html')
     .then(res => res.text())
     .then(html => {
       document.getElementById('content-area').innerHTML = html;
+
       setTimeout(() => {
         if (page.includes('home')) attachLoanCalculator();
-      }, 100); // delay to ensure DOM loads
+        if (page.includes('dsr')) attachDSRCalculator();
+      }, 100);
     })
     .catch(err => {
       document.getElementById('content-area').innerHTML = "<p>Failed to load content.</p>";
     });
 }
-
