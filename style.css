@@ -49,3 +49,16 @@
   font-weight: bold;
   color: #00ffcc;
 }
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.main-screen {
+  background: url('bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  color: white;
+}
+
